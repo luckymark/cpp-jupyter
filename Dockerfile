@@ -1,10 +1,13 @@
-FROM xaverklemenschits/jupyter-c-kernel
-MAINTAINER Mark
+FROM jupyter/minimal-notebook
 
-RUN pip install RISE
-RUN jupyter-nbextension install rise --py --sys-prefix
-RUN jupyter-nbextension enable rise --py --sys-prefix
+RUN conda install -y -c conda-forge xeus-cling rise
+
+RUN jupyter-nbextension install rise --py --sys-prefix && \
+    jupyter-nbextension enable rise --py --sys-prefix
+
 
 WORKDIR /home/$NB_USER/
 
 USER $NB_USER
+
+COPY . /home/$NB_USER/
