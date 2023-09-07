@@ -1,6 +1,6 @@
 FROM jupyter/minimal-notebook
 
-RUN conda install -y -c conda-forge xeus-cling
+RUN mamba install -y -c conda-forge xeus-cling
 RUN pip install RISE
 
 
